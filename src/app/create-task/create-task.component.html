@@ -1,0 +1,36 @@
+<form (submit)="postTask()">
+    <div class="card" style="width:50%; height: 55vh; margin-top: 5%; margin-left: 25%;">
+        <div class="card-title">Enter Task Details</div>
+        <div class="row row-align" id="tasktitle">
+            <label class="col-2">Title:</label>
+            <input class="form-control" name="tasktitle" [(ngModel)]="postData.title" placeholder="Enter Title" required style="width:20%">
+        </div>
+        <br>
+        <div class="row row-align"  id="taskdescription">
+            <label class="col-2">Description:</label>
+            <input class="form-control" [(ngModel)]="postData.description" placeholder="Enter Description" name="taskdescription" style="width:20%">
+        </div>
+        <div class="row row-align" id="taskpriority">
+            <label class="col-2">Priority:</label>
+            <select [(ngModel)]="postData.priority" name="priority" style="width:30%"  class="form-control">
+                <option value="" disabled selected>Select Priority</option>
+                <option *ngFor="let p of priority" [ngValue]="p.id">{{p.name}}</option>
+            </select>
+        </div>
+        <div class="row row-align">
+            <label  class="col-2">Due Date:</label>
+            <input  class="col-4" id="date" class="form-control" name="date" [(ngModel)]="postData.dueDate" type="date" style="width: 30%;" />
+        </div>
+        <div class="row row-align"id="taskstatus" >
+            <label class="col-2">Status:</label>
+            <select [(ngModel)]="postData.status" name="taskstatus" style="width:30%"  class="form-control">
+                <option value="" disabled selected>Select Status</option>
+                <option  *ngFor="let s of status" [ngValue]="s.id">{{s.name}}</option>
+            </select>
+        </div>
+         <div style="width: 100%; height: 2vh; display: flex; align-items: center; justify-content: center; margin-top: 2%;">
+            <button class="btn btn-primary" type="submit" (click)="postTask()">Create Task</button>
+        </div>
+    </div>
+   
+</form>

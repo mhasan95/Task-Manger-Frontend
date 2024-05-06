@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card"
+  >
+      <title>Tasks List</title>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="bg-success text-white">
+            <th>Task</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tableload">
+          <tr *ngFor="let task of Tasks; let srNo = index">
+            <td>{{srNo+1}}</td>
+            <td>
+              <div *ngIf="task.isEdit">
+                <input type="text" [(ngModel)]="task.title">
+              </div>
+              <div *ngIf="!task.isEdit">
+                {{task.title}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="task.isEdit">
+                <input type="text" [(ngModel)]="task.description">
+              </div>
+              <div *ngIf="!task.isEdit">
+                {{task.description}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="task.isEdit">
+                <select [(ngModel)]="task.priority" name="priority" style="width:50%"  class="form-control">
+                  <option value="" disabled selected>Select Priority</option>
+                  <option *ngFor="let p of priority" [ngValue]="p.id">{{p.name}}</option>
+              </select>
+              </div>
+              <div *ngIf="!task.isEdit">
+                {{task.priority}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="task.isEdit">
+                <input type="text" [(ngModel)]="task.dueDate" id="dueDate" type="date">
+              </div>
+              <div *ngIf="!task.isEdit">
+                {{task.dueDate}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="task.isEdit">
+                <select [(ngModel)]="task.status" name="priority" style="width:50%"  class="form-control">
+                  <option value="" disabled selected>Select Status</option>
+                  <option *ngFor="let s of status" [ngValue]="s.id">{{s.name}}</option>
+              </select>
+              </div>
+              <div *ngIf="!task.isEdit">
+                {{task.status}}
+              </div>
+            </td>
+            <td class="">
+              <div *ngIf="!task.isEdit">
+                <i class="fa-solid fa-pen-to-square" (click)="onEdit(task)"></i>
+                &nbsp;
+                <i class="fa-solid fa-trash" (click)="onDelete(task)"></i>
+              </div>
+              <div *ngIf="task.isEdit">
+                <i class="fa-solid fa-floppy-disk" (click)="onUpdate(task)"></i>
+                &nbsp;
+                <i class="fa-solid fa-xmark" (click)="onCancel(task)"></i>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="isLoading">Loading...</div>
+  </div>
+</div>
+<div class="row">
+  <div class="card">
+    <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions" [(update)]="updateFlag"  [callbackFunction]="chartCallback">
+    </highcharts-chart> 
+  </div>
+</div>

@@ -1,0 +1,50 @@
+
+<div class="row">
+    <div class="title">
+        Tasks Priority
+    </div>
+        <div class="board">
+            <div class="pending-column" (dragover)="onDragOver($event)" (drop)="onDrop($event,1)" >
+                <div class="column-header">
+                    Low
+                </div>
+                <div class="card" draggable="true" id="lowpriority" *ngFor="let task of filterTasks(1)" (dragstart)="onDragStart(task)">
+                    <div class="row task-content">Title: {{task.title}} </div>
+                    <br>
+                    <div class="row task-content">Desription: {{task.description}} </div>
+                    <br>
+                    <div class="row task-content">Status: {{getStatus}} </div>
+                    <br>
+                    <div class="row task-content">Due Date: {{date}} </div>
+                </div>
+            </div>
+            <div class="inprogess-column" (dragover)="onDragOver($event)" (drop)="onDrop($event,2)">
+                <div class="column-header">
+                    Medium
+                </div>
+                <div class="card" draggable="true" id="mediumpriority" *ngFor="let task of filterTasks(2)" (dragstart)="onDragStart(task)">
+                    <div class="row task-content">Title: {{task.title}} </div>
+                    <br>
+                    <div class="row task-content">Desription: {{task.description}} </div>
+                    <br>
+                    <div class="row task-content">Status: {{getStatus}} </div>
+                    <br>
+                    <div class="row task-content">Due Date: {{date}} </div>
+                </div>
+            </div>
+            <div class="completed-column" (dragover)="onDragOver($event)" (drop)="onDrop($event,3)">
+                <div class="column-header">
+                    High
+                </div>
+                <div class="card" draggable="true" id="highpriority"  *ngFor="let task of filterTasks(3)" (dragstart)="onDragStart(task)">
+                    <div class="row task-content">Title: {{task.title}} </div>
+                    <br>
+                    <div class="row task-content">Desription: {{task.description}} </div>
+                    <br>
+                    <div class="row task-content">Status: {{getStatus}} </div>
+                    <br>
+                    <div class="row task-content">Due Date: {{date}} </div>
+                </div>
+            </div>
+        </div>
+</div>

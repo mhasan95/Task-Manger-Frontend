@@ -1,0 +1,32 @@
+        <!-- FORMULAIRE DE CONNEXION -->
+    <div class="card">
+        <h2>Login Form</h2>
+
+            <!-- SE CONNECTER / S'INSCRIRE -->
+        <div class="login_register">
+            <a href="
+https://codepen.io/pen?template=gOEqMVq
+" class="login" target="blank">Login</a>
+            <a href="
+https://codepen.io/pen?template=VwRgKYB
+" class="register" target="blank">Signup</a>
+        </div>
+
+            <!-- FORMULAIRE -->
+        <form class="form">
+            <input type="email" [(ngModel)]="loginObj.EmailId" name="EmailId" placeholder="Email Address" class="email">
+            <input type="password" [(ngModel)]="loginObj.Password" name="Password" placeholder="password" class="pass">
+        </form>
+
+            <!-- MOT DE PASSE OUBLIE ? -->
+        <a href="#" class="fp">Forgot password?</a>
+
+            <!-- BOUTTON LOGIN -->
+            <button type="button" (click)="onLogin()" class="login_btn">Login</button>
+
+            <!-- PIED DE LA CARD -->
+        <div class="footer_card">
+        <p>Not a member?</p>
+        <a href="#">Singup now</a>
+        </div>
+    </div>

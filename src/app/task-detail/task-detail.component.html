@@ -1,0 +1,11 @@
+<div  class="search-results"
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="500"
+(scrolled)="onScroll()"
+[scrollWindow]="false" >
+<div class="data-card" *ngFor="let item of items">
+{{items}}
+</div>
+<div *ngIf="isLoading">Loading...</div>
+</div>
